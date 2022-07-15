@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
-  m_Name: TIle01
+  m_Name: TIle
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 0}
-  m_DefaultGameObject: {fileID: 7640381084337380159, guid: b39c51bf2a866454095c491dc1a4b2f0, type: 3}
+  m_DefaultSprite: {fileID: 21300000, guid: 529481b65c5dc914897a70c44bbc14b1, type: 3}
+  m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules: []
