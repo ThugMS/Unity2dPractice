@@ -152,10 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad262ba731f4de5428ab9874704fb309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterLevel: 0.4
+  starRiteLevel: 0.1
+  cazelineLevel: 0.2
+  blockLevel: 0.35
   scale: 0.1
   size: 100
-  randomSeed: 2
+  randomSeed: 3
 --- !u!4 &1453164508
 Transform:
   m_ObjectHideFlags: 0
