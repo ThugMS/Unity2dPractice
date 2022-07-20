@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MakeGrid : MonoBehaviour
+public class MakeInfiniteMap : MonoBehaviour
 {
     [SerializeField]
     private GameObject starRitePrefab;
@@ -23,6 +23,10 @@ public class MakeGrid : MonoBehaviour
     private int resourceStar = 0;
     private int[] dx = { 1, -1, 0, 0 };
     private int[] dy = { 0, 0, 1, -1 };
+
+    private float posX;
+    private float posY;
+
 
 
     private void FindResource(float[,] noiseMap, bool[,] findMap, int x, int y)
@@ -75,8 +79,7 @@ public class MakeGrid : MonoBehaviour
     }
 
 
-
-    private void Start()
+    public void NoiseCreateMap(int mapPosX, int mapPosY)
     {
         Random.InitState(randomSeed);
 
@@ -141,26 +144,14 @@ public class MakeGrid : MonoBehaviour
                 else if (noiseValue < blockLevel)
                 {
                     float sub = Random.Range(0.0f, 1.0f);
-
-                    //if (sub < 1 / 5f)
-                    //{
-                    //    cell.isStarLite = true;
-                    //}
-                    //else if (sub < 2 / 5f)
-                    //{
-                    //    cell.isCazeline = true;
-                    //}
-                    //else
-                    //{
-                    //    cell.isBlock = true;
-                    //}
                     cell.isBlock = true;
 
                 }
                 grid[x, y] = cell;
             }
         }
-        CreateInitialMap();
+
+        CreateInitialMap(mapPosX, mapPosY);
     }
 
     private void Update()
@@ -168,13 +159,15 @@ public class MakeGrid : MonoBehaviour
 
     }
 
-    private void CreateInitialMap()
+    private void CreateInitialMap(int mapPosX, int mapPosY)
     {
+
+
         for (int y = 0; y < size; y++)
         {
             for (int x = 0; x < size; x++)
             {
-                Vector3 pos = new Vector3(x - 25, y - 25, 0);
+                Vector3 pos = new Vector3(x + (mapPosX * 50) - 25, y + (mapPosY * 50) - 25, 0);
 
                 Cell cell = grid[x, y];
                 if (cell.isStarLite)
@@ -191,37 +184,9 @@ public class MakeGrid : MonoBehaviour
                     GameObject clone = Instantiate(blockPrefab, pos, Quaternion.identity);
                 }
 
-
-
-
             }
         }
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    if (!Application.isPlaying)
-    //        return;
 
-    //    for (int y = 0; y < size; y++)
-    //    {
-    //        for (int x = 0; x < size; x++)
-    //        {
-    //            Cell cell = grid[x, y];
-    //            if (cell.isStarLite)
-    //                Gizmos.color = Color.blue;
-
-    //            else if (cell.isCazeline)
-    //                Gizmos.color = Color.yellow;
-
-    //            else if (cell.isBlock)
-    //                Gizmos.color = Color.gray;
-    //            else
-    //                Gizmos.color = Color.black;
-
-    //            Vector3 pos = new Vector3(x-25, y-25, 0);
-    //            Gizmos.DrawCube(pos, Vector3.one);
-    //        }
-    //    }
-    //}
 }
